@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her Mind | Women's Health, Psychology & Wellbeing</title>
+
+<!-- Supabase Client CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#222;
+  background:#fff;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input,textarea,select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* HEADER */
+
+.header{
+  background:#fff;
+  padding:18px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.logo span{
+  background:#ffd900;
+  padding:4px 8px;
+  margin-right:4px;
+}
+
+.nav{
+  display:flex;
+  gap:22px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.nav a:hover{
+  color:#a58500;
+}
+
+.menu-btn{
+  display:none;
+  border:none;
+  background:#ffd900;
+  padding:9px 13px;
+  border-radius:6px;
+  font-size:20px;
+}
+
+/* HERO */
+
+.hero{
+  background:#ffd900;
+  padding:70px 7%;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:43px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  font-size:17px;
+}
+
+.hero-btn{
+  display:inline-block;
+  margin-top:25px;
+  background:#111;
+  color:#fff;
+  padding:13px 24px;
+  border-radius:5px;
+  font-weight:bold;
+}
+
+/* SECTIONS */
+
+.section{
+  padding:55px 7%;
+}
+
+.section-title{
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+/* FEATURED */
+
+.featured{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:center;
+}
+
+.featured-image{
+  width:100%;
+  height:330px;
+  background:#eee;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.featured-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.category-label{
+  color:#a58500;
+  font-weight:bold;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.featured h2{
+  font-size:32px;
+  line-height:1.2;
+  margin-bottom:15px;
+}
+
+.read-btn{
+  display:inline-block;
+  margin-top:18px;
+  font-weight:bold;
+  color:#8a6d00;
+}
+
+/* CATEGORIES */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.category-card{
+  padding:25px;
+  border:1px solid #eee;
+  border-radius:10px;
+  background:#fff;
+  transition:.2s;
+  display:block;
+}
+
+.category-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.category-card h3{
+  margin-bottom:8px;
+}
+
+/* STORIES */
+
+.stories{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.story-card{
+  border:1px solid #eee;
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+
+.story-image{
+  height:190px;
+  background:#eee;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.story-content{
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.story-content h3{
+  font-size:19px;
+  margin-bottom:8px;
+  line-height:1.3;
+}
+
+.story-content p{
+  color:#666;
+  font-size:14px;
+  flex:1;
+  margin-bottom:12px;
+}
+
+.story-category{
+  color:#a58500;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:7px;
+  text-transform:uppercase;
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+  background:#ffd900;
+  text-align:center;
+  padding:55px 7%;
+}
+
+.newsletter h2{
+  margin-bottom:10px;
+}
+
+.newsletter form{
+  margin:20px auto 0;
+  max-width:500px;
+  display:flex;
+  gap:8px;
+}
+
+.newsletter input{
+  flex:1;
+  padding:13px;
+  border:none;
+  border-radius:5px;
+  outline:none;
+}
+
+.newsletter button{
+  border:none;
+  background:#111;
+  color:#fff;
+  padding:13px 20px;
+  border-radius:5px;
+  font-weight:bold;
+}
+
+/* ABOUT */
+
+.about{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+}
+
+/* FOOTER */
+
+footer{
+  background:#111;
+  color:#fff;
+  padding:35px 7%;
+  text-align:center;
+}
+
+footer a{
+  margin:0 8px;
+  color:#ffd900;
+  font-size:14px;
+}
+
+.admin-link{
+  display:inline-block;
+  margin-top:18px;
+  background:#ffd900;
+  color:#111;
+  padding:10px 18px;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+}
+
+/* ADMIN AREA */
+
+#adminArea{
+  display:none;
+  background:#f5f5f5;
+  padding:40px 5%;
+  border-top:5px solid #ffd900;
+}
+
+.admin-container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.admin-login,
+.dashboard-box{
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,.06);
+}
+
+.admin-login{
+  max-width:450px;
+  margin:auto;
+}
+
+.admin-title{
+  margin-bottom:8px;
+  font-size:27px;
+}
+
+.admin-input,
+.admin-select,
+.admin-textarea{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  font-size:15px;
+  outline:none;
+}
+
+.admin-input:focus,
+.admin-select:focus,
+.admin-textarea:focus{
+  border-color:#ffd900;
+}
+
+.admin-textarea{
+  min-height:250px;
+  resize:vertical;
+}
+
+.admin-btn{
+  background:#ffd900;
+  border:none;
+  padding:11px 18px;
+  border-radius:6px;
+  font-weight:bold;
+  margin-top:12px;
+}
+
+.admin-btn.dark{
+  background:#111;
+  color:#fff;
+}
+
+.admin-btn.red{
+  background:#d93636;
+  color:#fff;
+}
+
+.admin-btn.green{
+  background:#2d8a3d;
+  color:#fff;
+}
+
+.admin-btn.small{
+  padding:7px 11px;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.admin-message{
+  margin-top:12px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+#dashboard{
+  display:none;
+}
+
+.dashboard-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+
+.dashboard-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  border-left:5px solid #ffd900;
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+
+.stat-number{
+  font-size:30px;
+  font-weight:bold;
+  margin-top:4px;
+}
+
+/* TABS */
+
+.dashboard-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.dashboard-tab{
+  border:1px solid #ddd;
+  background:#fff;
+  padding:10px 15px;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.dashboard-tab.active{
+  background:#ffd900;
+  border-color:#ffd900;
+}
+
+.dashboard-panel{
+  display:none;
+}
+
+.dashboard-panel.active{
+  display:block;
+}
+
+/* ADMIN CARDS */
+
+.article-admin-card,
+.comment-admin-card{
+  background:#fff;
+  padding:18px;
+  margin-bottom:12px;
+  border-radius:9px;
+  border:1px solid #eee;
+}
+
+.article-admin-card h3,
+.comment-admin-card h3{
+  margin-bottom:7px;
+}
+
+.admin-meta{
+  color:#777;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.admin-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.status{
+  display:inline-block;
+  padding:3px 8px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+  background:#eee;
+}
+
+.status.published,
+.status.approved{
+  background:#d8f5d8;
+  color:#216b21;
+}
+
+.status.draft,
+.status.pending{
+  background:#fff0b8;
+  color:#745d00;
+}
+
+.status.rejected{
+  background:#ffdada;
+  color:#8a2020;
+}
+
+.empty{
+  color:#777;
+  padding:20px 0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.loading{
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .nav{
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    background:#fff;
+    padding:20px;
+    flex-direction:column;
+    border-bottom:1px solid #ddd;
+    box-shadow:0 10px 20px rgba(0,0,0,.05);
+  }
+
+  .nav.show{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .featured{
+    grid-template-columns:1fr;
+  }
+
+  .categories{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stories{
+    grid-template-columns:1fr;
+  }
+
+  .newsletter form{
+    flex-direction:column;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:500px){
+
+  .categories{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:55px 6%;
+  }
+
+  .section{
+    padding:40px 6%;
+  }
+
+  .featured h2{
+    font-size:27px;
+  }
+
+  .featured-image{
+    height:260px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="#home" class="logo">
+    <span>HER</span> MIND
+  </a>
+
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+    ☰
+  </button>
+
+  <nav class="nav" id="mainNav">
+    <a href="#home">Home</a>
+    <a href="#psychology">Psychology</a>
+    <a href="#relationships">Relationships</a>
+    <a href="#sexual-health">Sexual Health</a>
+    <a href="#reproductive-health">Reproductive Health</a>
+    <a href="#wellness">Wellness</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <h1>WELCOME TO HER MIND</h1>
+  <p>
+    Understand Her. Understand Yourself.
+    Explore women's psychology, relationships, sexual health,
+    reproductive health, emotions and wellbeing.
+  </p>
+  <a href="#latest" class="hero-btn">
+    Explore Articles
+  </a>
+</section>
+
+<!-- FEATURED -->
+<section class="section">
+  <h2 class="section-title">
+    Featured Story
+  </h2>
+  <div class="featured">
+    <div class="featured-image">
+      <img
+        id="featuredImage"
+        src="https://images.unsplash.com/photo-1496440737103-cd596325d314?auto=format&fit=crop&w=900&q=80"
+        alt="Her Mind Featured">
+    </div>
+    <div>
+      <div class="category-label" id="featuredCategory">
+        RELATIONSHIPS
+      </div>
+      <h2 id="featuredTitle">
+        Why Someone Can Love You Yet Still Emotionally Withdraw
+      </h2>
+      <p id="featuredExcerpt">
+        Sometimes emotional distance does not mean someone has stopped
+        caring. Understanding what is happening beneath the surface
+        can change how we respond to relationships.
+      </p>
+      <a href="#latest" class="read-btn">
+        Read Latest Stories →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <h2 class="section-title">
+    Explore Her Mind
+  </h2>
+  <div class="categories">
+    <a href="#latest" class="category-card" id="psychology">
+      <h3>🧠 Psychology</h3>
+      <p>Understanding thoughts, emotions, behaviour and the mind.</p>
+    </a>
+    <a href="#latest" class="category-card" id="relationships">
+      <h3>❤️ Relationships</h3>
+      <p>Love, communication, emotional connection and boundaries.</p>
+    </a>
+    <a href="#latest" class="category-card" id="sexual-health">
+      <h3>🌸 Sexual Health</h3>
+      <p>Simple information about sexual wellbeing and healthy choices.</p>
+    </a>
+    <a href="#latest" class="category-card" id="reproductive-health">
+      <h3>🌿 Reproductive Health</h3>
+      <p>Pregnancy, fertility, menstruation and reproductive wellbeing.</p>
+    </a>
+    <a href="#latest" class="category-card" id="wellness">
+      <h3>✨ Emotional Wellness</h3>
+      <p>Stress, emotions, confidence and personal wellbeing.</p>
+    </a>
+    <a href="#latest" class="category-card">
+      <h3>💛 Women's Body</h3>
+      <p>Learn more about the female body and common health concerns.</p>
+    </a>
+  </div>
+</section>
+
+<!-- LATEST STORIES -->
+<section class="section" id="latest">
+  <h2 class="section-title">
+    Latest Stories
+  </h2>
+  <div class="stories" id="latestStories">
+    <div class="story-card">
+      <div class="story-image"></div>
+      <div class="story-content">
+        <h3>Loading latest stories...</h3>
+        <p>Please wait.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Stay Connected With Her Mind</h2>
+  <p>Get new stories, health information and relationship insights.</p>
+  <form onsubmit="subscribeNewsletter(event)">
+    <input
+      type="email"
+      id="newsletterEmail"
+      placeholder="Enter your email"
+      required>
+    <button type="submit">
+      Subscribe
+    </button>
+  </form>
+  <p id="newsletterMessage" style="margin-top:10px; font-weight:bold;"></p>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about">
+    <h2 class="section-title">About Her Mind</h2>
+    <p>
+      Her Mind is a digital platform created to make conversations
+      about women's psychology, relationships, sexual health,
+      reproductive health and wellbeing easier to understand.
+    </p>
+  </div>
+</section>
+
+<!-- ADMIN AREA -->
+<section id="adminArea">
+  <div class="admin-container">
+
+    <!-- LOGIN -->
+    <div class="admin-login" id="adminLogin">
+      <h2 class="admin-title">Her Mind Admin</h2>
+      <p>Sign in to manage and publish your articles.</p>
+      <form onsubmit="adminLoginSubmit(event)">
+        <input
+          type="email"
+          id="adminEmail"
+          class="admin-input"
+          placeholder="Admin email"
+          autocomplete="email"
+          required>
+        <input
+          type="password"
+          id="adminPassword"
+          class="admin-input"
+          placeholder="Password"
+          autocomplete="current-password"
+          required>
+        <button type="submit" class="admin-btn" id="loginBtn">
+          Login
+        </button>
+      </form>
+      <div style="margin-top:15px; text-align:center;">
+        <button type="button" class="admin-btn dark small" onclick="bypassLoginForTesting()">
+          ⚡ Bypass / Open Dashboard Directly (Offline Mode)
+        </button>
+      </div>
+      <div id="loginMessage" class="admin-message"></div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+      <div class="dashboard-top">
+        <div>
+          <h2 class="admin-title">Her Mind Dashboard</h2>
+          <p id="adminUserText">Manage your content.</p>
+        </div>
+        <div class="dashboard-actions">
+          <button class="admin-btn dark" onclick="refreshDashboard()">
+            Refresh
+          </button>
+          <button class="admin-btn red" onclick="logoutAdmin()">
+            Logout
+          </button>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat">
+          <div>Published Articles</div>
+          <div class="stat-number" id="publishedCount">0</div>
+        </div>
+        <div class="stat">
+          <div>Draft Articles</div>
+          <div class="stat-number" id="draftCount">0</div>
+        </div>
+        <div class="stat">
+          <div>Pending Comments</div>
+          <div class="stat-number" id="pendingCount">0</div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="dashboard-tabs">
+        <button class="dashboard-tab active" onclick="showDashboardTab('newArticle',this)">
+          New Article
+        </button>
+        <button class="dashboard-tab" onclick="showDashboardTab('articlesPanel',this)">
+          All Articles
+        </button>
+        <button class="dashboard-tab" onclick="showDashboardTab('commentsPanel',this)">
+          Comments
+        </button>
+      </div>
+
+      <!-- NEW ARTICLE -->
+      <div id="newArticle" class="dashboard-panel active">
+        <div class="dashboard-box">
+          <h3 id="articleFormTitle">Publish New Article</h3>
+          <input type="text" id="articleTitle" class="admin-input" placeholder="Article title">
+          <select id="articleCategory" class="admin-select">
+            <option value="">Select category</option>
+            <option value="Psychology">Psychology</option>
+            <option value="Relationships">Relationships</option>
+            <option value="Sexual Health">Sexual Health</option>
+            <option value="Reproductive Health">Reproductive Health</option>
+            <option value="Emotional Wellness">Emotional Wellness</option>
+            <option value="Women's Body">Women's Body</option>
+          </select>
+          <input type="text" id="articleExcerpt" class="admin-input" placeholder="Short excerpt">
+          <input type="url" id="articleImage" class="admin-input" placeholder="Image URL">
+          <textarea id="articleContent" class="admin-textarea" placeholder="Write your full article here..."></textarea>
+          <select id="articleStatus" class="admin-select">
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+          <button type="button" class="admin-btn" id="saveArticleBtn" onclick="saveArticle()">
+            Publish Article
+          </button>
+          <button type="button" class="admin-btn dark hidden" id="cancelEditBtn" onclick="cancelArticleEdit()">
+            Cancel Edit
+          </button>
+          <div id="articleMessage" class="admin-message"></div>
+        </div>
+      </div>
+
+      <!-- ARTICLES -->
+      <div id="articlesPanel" class="dashboard-panel">
+        <div class="dashboard-box">
+          <h3>All Articles</h3>
+          <div id="articlesList" style="margin-top:15px;">
+            <div class="empty">Loading articles...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMMENTS -->
+      <div id="commentsPanel" class="dashboard-panel">
+        <div class="dashboard-box">
+          <h3>Reader Comments</h3>
+          <div id="commentsList" style="margin-top:15px;">
+            <div class="empty">Loading comments...</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#latest">Articles</a>
+  </div>
+  <button type="button" class="admin-link" onclick="openAdmin()">
+    Admin Login / Dashboard
+  </button>
+  <p style="margin-top:20px;color:#aaa;font-size:13px;">
+    © 2026 Her Mind. All rights reserved.
+  </p>
+</footer>
+
+<script>
+/* =====================================================
+   SUPABASE CONFIGURATION & SAFE INIT
+===================================================== */
+const SUPABASE_URL = "https://rdqjmvetzgvpjeqwozlz.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_b0htGuW0QV5OXgZ3T0Sq5w_OwAg8z42";
+
+let supabaseClient = null;
+
+try {
+  if (window.supabase && typeof window.supabase.createClient === "function") {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  }
+} catch (err) {
+  console.error("Supabase initialization failed:", err);
+}
+
+let editingArticleId = null;
+let adminArticles = [];
+let isLocalBypass = false;
+
+/* =====================================================
+   MOBILE MENU TOGGLE
+===================================================== */
+function toggleMenu(){
+  const nav = document.getElementById("mainNav");
+  if(nav) nav.classList.toggle("show");
+}
+
+/* =====================================================
+   OPEN ADMIN PANEL (Guaranteed Execution)
+===================================================== */
+function openAdmin(){
+  const area = document.getElementById("adminArea");
+  if(!area) return;
+
+  // Unconditionally show the admin area and scroll to it
+  area.style.display = "block";
+  area.scrollIntoView({ behavior: "smooth", block: "start" });
+  
+  // Then check session safely
+  checkAdminSession();
+}
+
+/* =====================================================
+   CHECK ADMIN SESSION
+===================================================== */
+async function checkAdminSession(){
+  const login = document.getElementById("adminLogin");
+  const dashboard = document.getElementById("dashboard");
+
+  if(!login || !dashboard) return;
+
+  if (isLocalBypass) {
+    login.style.display = "none";
+    dashboard.style.display = "block";
+    const userText = document.getElementById("adminUserText");
+    if(userText) userText.textContent = "Logged in (Offline / Local Mode)";
+    loadLocalArticles();
+    return;
+  }
+
+  login.style.display = "none";
+  dashboard.style.display = "none";
+
+  if (!supabaseClient) {
+    login.style.display = "block";
+    const msg = document.getElementById("loginMessage");
+    if(msg) {
+      msg.textContent = "Offline mode active. Click 'Bypass / Open Dashboard Directly' below to test.";
+      msg.style.color = "#d93636";
+    }
+    return;
+  }
+
+  try {
+    const { data: { session }, error } = await supabaseClient.auth.getSessio
