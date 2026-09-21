@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Her Mind | Women's Health, Psychology & Wellbeing</title>
 
-<!-- Supabase Client CDN -->
+<title>Her Mind</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -178,7 +178,6 @@ button{
   border-radius:10px;
   background:#fff;
   transition:.2s;
-  display:block;
 }
 
 .category-card:hover{
@@ -203,8 +202,6 @@ button{
   border-radius:10px;
   overflow:hidden;
   background:#fff;
-  display:flex;
-  flex-direction:column;
 }
 
 .story-image{
@@ -220,9 +217,6 @@ button{
 
 .story-content{
   padding:20px;
-  display:flex;
-  flex-direction:column;
-  flex:1;
 }
 
 .story-content h3{
@@ -234,8 +228,6 @@ button{
 .story-content p{
   color:#666;
   font-size:14px;
-  flex:1;
-  margin-bottom:12px;
 }
 
 .story-category{
@@ -243,7 +235,6 @@ button{
   font-size:12px;
   font-weight:bold;
   margin-bottom:7px;
-  text-transform:uppercase;
 }
 
 /* NEWSLETTER */
@@ -464,7 +455,6 @@ footer a{
   padding:10px 15px;
   border-radius:6px;
   font-weight:bold;
-  cursor:pointer;
 }
 
 .dashboard-tab.active{
@@ -483,7 +473,8 @@ footer a{
 /* ADMIN CARDS */
 
 .article-admin-card,
-.comment-admin-card{
+.comment-admin-card,
+.subscriber-admin-card{
   background:#fff;
   padding:18px;
   margin-bottom:12px;
@@ -492,7 +483,8 @@ footer a{
 }
 
 .article-admin-card h3,
-.comment-admin-card h3{
+.comment-admin-card h3,
+.subscriber-admin-card h3{
   margin-bottom:7px;
 }
 
@@ -506,7 +498,6 @@ footer a{
   display:flex;
   gap:7px;
   flex-wrap:wrap;
-  margin-top:10px;
 }
 
 .status{
@@ -530,11 +521,6 @@ footer a{
   color:#745d00;
 }
 
-.status.rejected{
-  background:#ffdada;
-  color:#8a2020;
-}
-
 .empty{
   color:#777;
   padding:20px 0;
@@ -542,12 +528,6 @@ footer a{
 
 .hidden{
   display:none!important;
-}
-
-.loading{
-  text-align:center;
-  padding:30px;
-  color:#777;
 }
 
 /* MOBILE */
@@ -564,7 +544,6 @@ footer a{
     padding:20px;
     flex-direction:column;
     border-bottom:1px solid #ddd;
-    box-shadow:0 10px 20px rgba(0,0,0,.05);
   }
 
   .nav.show{
@@ -628,156 +607,257 @@ footer a{
 <body>
 
 <!-- HEADER -->
+
 <header class="header">
+
   <a href="#home" class="logo">
     <span>HER</span> MIND
   </a>
 
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+  <button class="menu-btn" onclick="toggleMenu()">
     ☰
   </button>
 
   <nav class="nav" id="mainNav">
+
     <a href="#home">Home</a>
     <a href="#psychology">Psychology</a>
     <a href="#relationships">Relationships</a>
     <a href="#sexual-health">Sexual Health</a>
     <a href="#reproductive-health">Reproductive Health</a>
     <a href="#wellness">Wellness</a>
+
   </nav>
+
 </header>
 
+
 <!-- HERO -->
+
 <section class="hero" id="home">
+
   <h1>WELCOME TO HER MIND</h1>
+
   <p>
     Understand Her. Understand Yourself.
     Explore women's psychology, relationships, sexual health,
     reproductive health, emotions and wellbeing.
   </p>
+
   <a href="#latest" class="hero-btn">
     Explore Articles
   </a>
+
 </section>
 
+
 <!-- FEATURED -->
+
 <section class="section">
+
   <h2 class="section-title">
     Featured Story
   </h2>
+
   <div class="featured">
+
     <div class="featured-image">
+
       <img
         id="featuredImage"
         src="https://images.unsplash.com/photo-1496440737103-cd596325d314?auto=format&fit=crop&w=900&q=80"
-        alt="Her Mind Featured">
+        alt="Her Mind">
+
     </div>
+
     <div>
+
       <div class="category-label" id="featuredCategory">
         RELATIONSHIPS
       </div>
+
       <h2 id="featuredTitle">
         Why Someone Can Love You Yet Still Emotionally Withdraw
       </h2>
+
       <p id="featuredExcerpt">
         Sometimes emotional distance does not mean someone has stopped
         caring. Understanding what is happening beneath the surface
         can change how we respond to relationships.
       </p>
+
       <a href="#latest" class="read-btn">
         Read Latest Stories →
       </a>
+
     </div>
+
   </div>
+
 </section>
 
+
 <!-- CATEGORIES -->
+
 <section class="section">
+
   <h2 class="section-title">
     Explore Her Mind
   </h2>
+
   <div class="categories">
+
     <a href="#latest" class="category-card" id="psychology">
       <h3>🧠 Psychology</h3>
-      <p>Understanding thoughts, emotions, behaviour and the mind.</p>
+      <p>
+        Understanding thoughts, emotions, behaviour and the mind.
+      </p>
     </a>
+
     <a href="#latest" class="category-card" id="relationships">
       <h3>❤️ Relationships</h3>
-      <p>Love, communication, emotional connection and boundaries.</p>
+      <p>
+        Love, communication, emotional connection and boundaries.
+      </p>
     </a>
+
     <a href="#latest" class="category-card" id="sexual-health">
       <h3>🌸 Sexual Health</h3>
-      <p>Simple information about sexual wellbeing and healthy choices.</p>
+      <p>
+        Simple information about sexual wellbeing and healthy choices.
+      </p>
     </a>
+
     <a href="#latest" class="category-card" id="reproductive-health">
       <h3>🌿 Reproductive Health</h3>
-      <p>Pregnancy, fertility, menstruation and reproductive wellbeing.</p>
+      <p>
+        Pregnancy, fertility, menstruation and reproductive wellbeing.
+      </p>
     </a>
+
     <a href="#latest" class="category-card" id="wellness">
       <h3>✨ Emotional Wellness</h3>
-      <p>Stress, emotions, confidence and personal wellbeing.</p>
+      <p>
+        Stress, emotions, confidence and personal wellbeing.
+      </p>
     </a>
+
     <a href="#latest" class="category-card">
       <h3>💛 Women's Body</h3>
-      <p>Learn more about the female body and common health concerns.</p>
+      <p>
+        Learn more about the female body and common health concerns.
+      </p>
     </a>
+
   </div>
+
 </section>
 
+
 <!-- LATEST STORIES -->
+
 <section class="section" id="latest">
+
   <h2 class="section-title">
     Latest Stories
   </h2>
+
   <div class="stories" id="latestStories">
+
     <div class="story-card">
+
       <div class="story-image"></div>
+
       <div class="story-content">
+
         <h3>Loading latest stories...</h3>
-        <p>Please wait.</p>
+
+        <p>
+          Please wait.
+        </p>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
+
 <!-- NEWSLETTER -->
+
 <section class="newsletter">
-  <h2>Stay Connected With Her Mind</h2>
-  <p>Get new stories, health information and relationship insights.</p>
+
+  <h2>
+    Stay Connected With Her Mind
+  </h2>
+
+  <p>
+    Get new stories, health information and relationship insights.
+  </p>
+
   <form onsubmit="subscribeNewsletter(event)">
+
     <input
       type="email"
       id="newsletterEmail"
       placeholder="Enter your email"
       required>
+
     <button type="submit">
       Subscribe
     </button>
+
   </form>
-  <p id="newsletterMessage" style="margin-top:10px; font-weight:bold;"></p>
+
+  <p id="newsletterMessage" style="margin-top:10px;"></p>
+
 </section>
 
+
 <!-- ABOUT -->
+
 <section class="section" id="about">
+
   <div class="about">
-    <h2 class="section-title">About Her Mind</h2>
+
+    <h2 class="section-title">
+      About Her Mind
+    </h2>
+
     <p>
       Her Mind is a digital platform created to make conversations
       about women's psychology, relationships, sexual health,
       reproductive health and wellbeing easier to understand.
     </p>
+
   </div>
+
 </section>
 
+
 <!-- ADMIN AREA -->
+
 <section id="adminArea">
+
   <div class="admin-container">
 
+
     <!-- LOGIN -->
+
     <div class="admin-login" id="adminLogin">
-      <h2 class="admin-title">Her Mind Admin</h2>
-      <p>Sign in to manage and publish your articles.</p>
+
+      <h2 class="admin-title">
+        Her Mind Admin
+      </h2>
+
+      <p>
+        Sign in to manage and publish your articles.
+      </p>
+
       <form onsubmit="adminLoginSubmit(event)">
+
         <input
           type="email"
           id="adminEmail"
@@ -785,6 +865,7 @@ footer a{
           placeholder="Admin email"
           autocomplete="email"
           required>
+
         <input
           type="password"
           id="adminPassword"
@@ -792,208 +873,412 @@ footer a{
           placeholder="Password"
           autocomplete="current-password"
           required>
-        <button type="submit" class="admin-btn" id="loginBtn">
+
+        <button
+          type="submit"
+          class="admin-btn"
+          id="loginBtn">
+
           Login
+
         </button>
+
       </form>
-      <div style="margin-top:15px; text-align:center;">
-        <button type="button" class="admin-btn dark small" onclick="bypassLoginForTesting()">
-          ⚡ Bypass / Open Dashboard Directly (Offline Mode)
-        </button>
+
+      <div
+        id="loginMessage"
+        class="admin-message">
       </div>
-      <div id="loginMessage" class="admin-message"></div>
+
     </div>
+
 
     <!-- DASHBOARD -->
+
     <div id="dashboard">
+
       <div class="dashboard-top">
+
         <div>
-          <h2 class="admin-title">Her Mind Dashboard</h2>
-          <p id="adminUserText">Manage your content.</p>
+
+          <h2 class="admin-title">
+            Her Mind Dashboard
+          </h2>
+
+          <p id="adminUserText">
+            Manage your content.
+          </p>
+
         </div>
+
         <div class="dashboard-actions">
-          <button class="admin-btn dark" onclick="refreshDashboard()">
+
+          <button
+            class="admin-btn dark"
+            onclick="refreshDashboard()">
+
             Refresh
+
           </button>
-          <button class="admin-btn red" onclick="logoutAdmin()">
+
+          <button
+            class="admin-btn red"
+            onclick="logoutAdmin()">
+
             Logout
+
           </button>
+
         </div>
+
       </div>
+
 
       <!-- STATS -->
+
       <div class="stats">
+
         <div class="stat">
-          <div>Published Articles</div>
-          <div class="stat-number" id="publishedCount">0</div>
+
+          <div>
+            Published Articles
+          </div>
+
+          <div
+            class="stat-number"
+            id="publishedCount">
+            0
+          </div>
+
         </div>
+
         <div class="stat">
-          <div>Draft Articles</div>
-          <div class="stat-number" id="draftCount">0</div>
+
+          <div>
+            Draft Articles
+          </div>
+
+          <div
+            class="stat-number"
+            id="draftCount">
+            0
+          </div>
+
         </div>
+
         <div class="stat">
-          <div>Pending Comments</div>
-          <div class="stat-number" id="pendingCount">0</div>
+
+          <div>
+            Subscribers / Emails
+          </div>
+
+          <div
+            class="stat-number"
+            id="subscribersCount">
+            0
+          </div>
+
         </div>
+
       </div>
+
 
       <!-- TABS -->
+
       <div class="dashboard-tabs">
-        <button class="dashboard-tab active" onclick="showDashboardTab('newArticle',this)">
+
+        <button
+          class="dashboard-tab active"
+          onclick="showDashboardTab('newArticle',this)">
           New Article
         </button>
-        <button class="dashboard-tab" onclick="showDashboardTab('articlesPanel',this)">
+
+        <button
+          class="dashboard-tab"
+          onclick="showDashboardTab('articlesPanel',this)">
           All Articles
         </button>
-        <button class="dashboard-tab" onclick="showDashboardTab('commentsPanel',this)">
+
+        <button
+          class="dashboard-tab"
+          onclick="showDashboardTab('commentsPanel',this)">
           Comments
         </button>
+
+        <button
+          class="dashboard-tab"
+          onclick="showDashboardTab('subscribersPanel',this)">
+          Subscribers & Emails
+        </button>
+
       </div>
+
 
       <!-- NEW ARTICLE -->
-      <div id="newArticle" class="dashboard-panel active">
+
+      <div
+        id="newArticle"
+        class="dashboard-panel active">
+
         <div class="dashboard-box">
-          <h3 id="articleFormTitle">Publish New Article</h3>
-          <input type="text" id="articleTitle" class="admin-input" placeholder="Article title">
-          <select id="articleCategory" class="admin-select">
-            <option value="">Select category</option>
-            <option value="Psychology">Psychology</option>
-            <option value="Relationships">Relationships</option>
-            <option value="Sexual Health">Sexual Health</option>
-            <option value="Reproductive Health">Reproductive Health</option>
-            <option value="Emotional Wellness">Emotional Wellness</option>
-            <option value="Women's Body">Women's Body</option>
+
+          <h3 id="articleFormTitle">
+            Publish New Article
+          </h3>
+
+          <input
+            type="text"
+            id="articleTitle"
+            class="admin-input"
+            placeholder="Article title">
+
+          <select
+            id="articleCategory"
+            class="admin-select">
+
+            <option value="">
+              Select category
+            </option>
+
+            <option value="Psychology">
+              Psychology
+            </option>
+
+            <option value="Relationships">
+              Relationships
+            </option>
+
+            <option value="Sexual Health">
+              Sexual Health
+            </option>
+
+            <option value="Reproductive Health">
+              Reproductive Health
+            </option>
+
+            <option value="Emotional Wellness">
+              Emotional Wellness
+            </option>
+
+            <option value="Women's Body">
+              Women's Body
+            </option>
+
           </select>
-          <input type="text" id="articleExcerpt" class="admin-input" placeholder="Short excerpt">
-          <input type="url" id="articleImage" class="admin-input" placeholder="Image URL">
-          <textarea id="articleContent" class="admin-textarea" placeholder="Write your full article here..."></textarea>
-          <select id="articleStatus" class="admin-select">
-            <option value="published">Published</option>
-            <option value="draft">Draft</option>
+
+          <input
+            type="text"
+            id="articleExcerpt"
+            class="admin-input"
+            placeholder="Short excerpt">
+
+          <input
+            type="url"
+            id="articleImage"
+            class="admin-input"
+            placeholder="Image URL">
+
+          <textarea
+            id="articleContent"
+            class="admin-textarea"
+            placeholder="Write your full article here..."></textarea>
+
+          <select
+            id="articleStatus"
+            class="admin-select">
+
+            <option value="published">
+              Published
+            </option>
+
+            <option value="draft">
+              Draft
+            </option>
+
           </select>
-          <button type="button" class="admin-btn" id="saveArticleBtn" onclick="saveArticle()">
+
+          <button
+            type="button"
+            class="admin-btn"
+            id="saveArticleBtn"
+            onclick="saveArticle()">
+
             Publish Article
+
           </button>
-          <button type="button" class="admin-btn dark hidden" id="cancelEditBtn" onclick="cancelArticleEdit()">
+
+          <button
+            type="button"
+            class="admin-btn dark hidden"
+            id="cancelEditBtn"
+            onclick="cancelArticleEdit()">
+
             Cancel Edit
+
           </button>
-          <div id="articleMessage" class="admin-message"></div>
+
+          <div
+            id="articleMessage"
+            class="admin-message">
+          </div>
+
         </div>
+
       </div>
+
 
       <!-- ARTICLES -->
-      <div id="articlesPanel" class="dashboard-panel">
+
+      <div
+        id="articlesPanel"
+        class="dashboard-panel">
+
         <div class="dashboard-box">
-          <h3>All Articles</h3>
-          <div id="articlesList" style="margin-top:15px;">
-            <div class="empty">Loading articles...</div>
+
+          <h3>
+            All Articles
+          </h3>
+
+          <div
+            id="articlesList"
+            style="margin-top:15px;">
+
+            <div class="empty">
+              Loading articles...
+            </div>
+
           </div>
+
         </div>
+
       </div>
 
+
       <!-- COMMENTS -->
-      <div id="commentsPanel" class="dashboard-panel">
+
+      <div
+        id="commentsPanel"
+        class="dashboard-panel">
+
         <div class="dashboard-box">
-          <h3>Reader Comments</h3>
-          <div id="commentsList" style="margin-top:15px;">
-            <div class="empty">Loading comments...</div>
+
+          <h3>
+            Reader Comments
+          </h3>
+
+          <div
+            id="commentsList"
+            style="margin-top:15px;">
+
+            <div class="empty">
+              Loading comments...
+            </div>
+
           </div>
+
         </div>
+
+      </div>
+
+
+      <!-- SUBSCRIBERS / EMAILS PANEL -->
+
+      <div
+        id="subscribersPanel"
+        class="dashboard-panel">
+
+        <div class="dashboard-box">
+
+          <h3>
+            Newsletter Subscribers & Emails
+          </h3>
+
+          <p style="color:#666; font-size:14px; margin-top:5px;">
+            Review all reader email addresses collected from the newsletter form.
+          </p>
+
+          <div
+            id="subscribersList"
+            style="margin-top:15px;">
+
+            <div class="empty">
+              Loading subscribers...
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
+
 <!-- FOOTER -->
+
 <footer>
+
   <div>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#latest">Articles</a>
+
+    <a href="#home">
+      Home
+    </a>
+
+    <a href="#about">
+      About
+    </a>
+
+    <a href="#latest">
+      Articles
+    </a>
+
   </div>
-  <button type="button" class="admin-link" onclick="openAdmin()">
-    Admin Login / Dashboard
+
+  <button
+    type="button"
+    class="admin-link"
+    onclick="openAdmin()">
+
+    Admin Login
+
   </button>
+
   <p style="margin-top:20px;color:#aaa;font-size:13px;">
+
     © 2026 Her Mind. All rights reserved.
+
   </p>
+
 </footer>
 
+
 <script>
+
 /* =====================================================
-   SUPABASE CONFIGURATION & SAFE INIT
+   SUPABASE INITIALIZATION
 ===================================================== */
+
 const SUPABASE_URL = "https://rdqjmvetzgvpjeqwozlz.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_b0htGuW0QV5OXgZ3T0Sq5w_OwAg8z42";
 
-let supabaseClient = null;
-
-try {
-  if (window.supabase && typeof window.supabase.createClient === "function") {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-  }
-} catch (err) {
-  console.error("Supabase initialization failed:", err);
-}
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
 let editingArticleId = null;
 let adminArticles = [];
-let isLocalBypass = false;
 
 /* =====================================================
-   MOBILE MENU TOGGLE
+   ON INITIAL LOAD
 ===================================================== */
-function toggleMenu(){
-  const nav = document.getElementById("mainNav");
-  if(nav) nav.classList.toggle("show");
-}
 
-/* =====================================================
-   OPEN ADMIN PANEL (Guaranteed Execution)
-===================================================== */
-function openAdmin(){
-  const area = document.getElementById("adminArea");
-  if(!area) return;
+document.addEventListener("DOMContentLoaded", () => {
+  loadPublicArticles();
+});
 
-  // Unconditionally show the admin area and scroll to it
-  area.style.display = "block";
-  area.scrollIntoView({ behavior: "smooth", block: "start" });
-  
-  // Then check session safely
-  checkAdminSession();
-}
-
-/* =====================================================
-   CHECK ADMIN SESSION
-===================================================== */
-async function checkAdminSession(){
-  const login = document.getElementById("adminLogin");
-  const dashboard = document.getElementById("dashboard");
-
-  if(!login || !dashboard) return;
-
-  if (isLocalBypass) {
-    login.style.display = "none";
-    dashboard.style.display = "block";
-    const userText = document.getElementById("adminUserText");
-    if(userText) userText.textContent = "Logged in (Offline / Local Mode)";
-    loadLocalArticles();
-    return;
-  }
-
-  login.style.display = "none";
-  dashboard.style.display = "none";
-
-  if (!supabaseClient) {
-    login.style.display = "block";
-    const msg = document.getElementById("loginMessage");
-    if(msg) {
-      msg.textContent = "Offline mode active. Click 'Bypass / Open Dashboard Directly' below to test.";
-      msg.style.color = "#d93636";
-    }
-    return;
-  }
-
-  try {
-    const { data: { session }, error } = await supabaseClient.auth.getSessio
+/* =============
